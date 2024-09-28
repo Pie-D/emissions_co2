@@ -6,7 +6,7 @@ import cv2
 import pandas as pd
 from ultralytics import YOLO
 from tracker import *
-from connection_mysql import *
+from emissions_co2.emission_speed.map.connection_mysql import *
 import numpy as np
 # https: // sfs1.roadsummary.com/rtplive/CAM047/playlist.m3u8
 # Khởi tạo model YOLO
@@ -78,10 +78,9 @@ while True:
                            [-1, 5, -1],
                            [0, -1, 0]])
 
-# Áp dụng bộ lọc sắc nét vào ảnh
+        # Áp dụng bộ lọc sắc nét vào ảnh
         frame = cv2.filter2D(frame, -1, kernel)
 
-        # Hiển thị ảnh gốc và ảnh đã làm sắc nét
         cv2.imshow('Sharpened Image', frame)
         results = model.predict(frame)
 
@@ -210,12 +209,12 @@ while True:
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 1, cv2.LINE_AA)
 
         # Save frame
-        frame_filename = f'detected_frames/frame_{count}.jpg'
+        # frame_filename = f'detected_frames/frame_{count}.jpg'
 
-        cv2.imwrite(frame_filename, frame)
+        # cv2.imwrite(frame_filename, frame)
 
-        out.write(frame)
-        print(type(frame))
+        # out.write(frame)
+        # print(type(frame))
 
         cv2.imshow("frames", frame)
 
