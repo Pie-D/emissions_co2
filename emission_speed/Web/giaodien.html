@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Emission Intensity</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+       /* #contentRow {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            gap: 20px; 
+        } */
+        canvas {
+            max-width: 800px;
+            margin: auto;
+        }
+        iframe {
+            margin-top: 20px;
+            width: 50%;
+            height: 450px;
+            border: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <form id="filterForm" style="margin-bottom: 20px;">
+        <label for="date">Chọn ngày:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="cameraId">ID Camera:</label>
+        <input type="number" id="cameraId" name="cameraId" min="1" required>
+        <label for="viewType">Tùy chọn hiển thị:</label>
+        <select id="viewType" name="viewType" required>
+            <option value="average">Xem trung bình</option>
+            <option value="total">Xem tổng</option>
+        </select>
+        <button type="submit">Xem dữ liệu</button>
+    </form>
+    <h2 id = 'chartTitle' style="text-align: center;" >Traffic Emission Intensity </h2>
+    <!-- <canvas id="emissionChart" style="width: 100%; max-width: 800px; height: 400px;"></canvas> -->
+    <canvas id="emissionChart" width="1000" height="500"></canvas>
+    <iframe src="https://www.google.com/maps/d/embed?mid=1vgcHXUpWY9HRzQ3TA_hrI8xXTQzU6AA&ehbc=2E312F" ></iframe>
+    <script src="app.js"></script>
+</body>
+</html>

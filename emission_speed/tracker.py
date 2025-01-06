@@ -15,10 +15,11 @@ class Tracker:
 
         # Get center point of new object
         for rect in objects_rect:
-            x, y, w, h, e = rect
-            cx = (x + x + w) // 2
-            cy = (y + y + h) // 2
-
+            x, y, x2, y2, e = rect
+            # print(rect, "---", e)
+            cx = (x + x2) // 2
+            cy = (y + y2) // 2
+            # print(cx,":",cy, "---", e)
             # Find out if that object was detected already
             same_object_detected = False
             for id, pt in self.center_points.items():
@@ -27,14 +28,14 @@ class Tracker:
                 if dist < 35:
                     self.center_points[id] = (cx, cy)
 #                    print(self.center_points)
-                    objects_bbs_ids.append([x, y, w, h, e, id])
+                    objects_bbs_ids.append([x, y, x2, y2, e, id])
                     same_object_detected = True
                     break
 
             # New object is detected we assign the ID to that object
             if same_object_detected is False:
                 self.center_points[self.id_count] = (cx, cy)
-                objects_bbs_ids.append([x, y, w, h, e, self.id_count])
+                objects_bbs_ids.append([x, y, x2, y2, e, self.id_count])
                 self.id_count += 1
 
         # Clean the dictionary by center points to remove IDS not used anymore

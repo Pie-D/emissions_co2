@@ -2,7 +2,9 @@ import osmnx as ox
 import networkx as nx
 import pandas as pd
 from shapely.geometry import LineString
-from connection_mysql import *
+from emissions_co2.emission_speed.connection_mysql import *
+import  numpy as np
+
 # Tải dữ liệu mạng lưới đường bộ từ OpenStreetMap
 place_name = "Montreal, Canada"
 type_way = '["motorway", "trunk", "primary", "secondary"]'
